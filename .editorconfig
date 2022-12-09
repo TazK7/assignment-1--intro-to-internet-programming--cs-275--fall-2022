@@ -10,3 +10,4 @@ insert_final_newline = true
 
 [*.js]
 indent_size = 4
+
