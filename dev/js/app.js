@@ -1,61 +1,54 @@
 window.onload = () => {
-    let firstArray = document.getElementById(`first_Matrix`);
-    let flippedArray = document.getElementById(`reverse_Matrix`);
+    // Input prompt to the user
+    let input;
     let content = ``;
     let counter = 1;
-    // Input prompt to the user
-    let input = window.prompt(`What is the size of the matrix?`);
-    // Sentinel
-    while (input < 2) {
-        input = window.prompt(`Incorrect input, please enter a whole number larger than 1.`);
-    }
-    //Assign user input value to array value
+
+    do {
+        //user input enters value and returns an array matrix
+        input = prompt(`Please enter Matrix size that is greater than 1`);
+    } while (input <= 1 || input === null || isNaN(input));
+
+    //User input value to array value
     input = parseInt(input);
-    console.log(typeof input);
-    let inputArray = new Array(input);
+    let array = new Array (input);
 
     content = `<table>`;
-    // Generating normal array
-    for(let i = 0; i < inputArray.length; i++) {
-        content += `<tr>`;
 
-        for(let j = 0; j < inputArray.length; j++) {
+    //base array that is populated with values based on the user input
+    let  base_Matrix = document.getElementById(`base_Matrix`);
+    //iterating through rows and coloumn base on the array size
+    for(let i = 0; i < array.length; i++) {
+        content += `<tr>`; //displays content in rows of array
+
+        for(let j = 0; j < array.length; j++) {
             content += `<td>${counter++}</td>`;
         }
-
-        content += `</tr>`;
+        content += `</tr>`; //close table rows
     }
+    content += `</table>`; //close table for baseArray
 
-    content += `</table>`;
+    base_Matrix.innerHTML = content; //displaying base array
 
-    firstArray.innerHTML = content;
-
-    //Flipped matrix
-
+    //flipped matrix that is return based on the size of the base array
+    let reverse_Matrix = document.getElementById(`reverse_Matrix`);
     content = `<table>`;
-
-    for(let i = 0; i < inputArray.length; i++) {
+    //looping through the array flipped
+    for(let i = 0; i < array.length; i++) {
         content += `<tr>`;
 
-        for(let j = 0; j < inputArray.length; j++) {
-            //Holding a temporary variable for current place in array
-            let tempHolder = (i * inputArray.length) + j + 1;
-            //Checking for any potential diagonal values in array
-            if(!((inputArray.length + ((inputArray.length - 1) * i) === tempHolder ))) {
+        //placing a placeholder for each time the matrix is flipped
+        for(let j = 0; j < array.length; j++) {
+            let place_holder= (i * array.length) + j + 1;
 
-                tempHolder = (inputArray.length * inputArray.length) - tempHolder;
-                tempHolder++;
+            if(!((array.length + ((array.length - 1) * i) === place_holder ))) {
+                place_holder= (array.length * array.length) - place_holder;
+                place_holder++;
             }
-
-            content += `<td>${tempHolder}</td>`;
-
+            content += `<td>${place_holder}</td>`;
         }
-
         content += `</tr>`;
     }
-
     content += `</table>`;
-
-    reverse_Matrix.innerHTML = content;
-
+    reverse_Matrix.innerHTML = content; //displaying flipped array
 };
