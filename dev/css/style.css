@@ -1,35 +1,40 @@
-body{
-
-    background-color: aqua;
+h1
+{
+  text-align: center;
+  background-color: tan;
+  border: 5px;
 }
 
+body {
+  background-color: coral;
+  font-family: monospace;
+  text-align: center;
+
+  height: 100%;
+}
+
+table,
+td {
+  border: 2px solid beige;
+}
+
+table {
+  background-color: lightcoral;
+  border-collapse: collapse;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  padding: 12px;
+}
 
 h1 {
-    text-align: center;
-  }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  table,
+  text-align: center;
+  background-color: beige;
+  font-family: monospace;
+  border-style: solid;
+  padding: 6px;
+}
 
-
-  td {
-    border: 5px solid lightseagreen;
-    text-align: center;
-  }
-  
-  table {
-    border-collapse: collapse;
-    margin: 10px 0;
-  }
-  
-  td {
-    padding: 12px;
-  }
-  
-  .matrix {
-    display: flex;
-    justify-content: center;
-  }
